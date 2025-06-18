@@ -19,11 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lua\net\entity\LLocalPlayer.cpp" />
-    <ClCompile Include="Lua\net\entity\LLocalPlayer.h" />
-    <ClCompile Include="Lua\luaMain.cpp" />
-    <ClCompile Include="Lua\net\LMinecraft.cpp" />
-    <ClCompile Include="Lua\utils\wait.cpp" />
+    <ClCompile Include="LuaEnv\Init.cpp" />
+    <ClCompile Include="LuaEnv\Services\GetService.cpp" />
+    <ClCompile Include="LuaEnv\Services\Players\Players.cpp" />
     <ClCompile Include="net\minecraft\client\LocalPlayer.cpp" />
     <ClCompile Include="net\Minecraft.cpp" />
     <ClCompile Include="src\Java.cpp" />
@@ -31,11 +29,14 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Lua\luaMain.h" />
-    <ClInclude Include="Lua\net\LMinecraft.h" />
-    <ClInclude Include="Lua\utils\utils.h" />
+    <ClInclude Include="LuaEnv\init.h" />
+    <ClInclude Include="LuaEnv\Services\GetService.h" />
+    <ClInclude Include="LuaEnv\Services\Players\Players.h" />
     <ClInclude Include="net\Minecraft.h" />
     <ClInclude Include="net\minecraft\client\LocalPlayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="mappings.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -3,4 +3,4 @@
 
 struct lua_State;
 
-int lua_wait(lua_State* L);
+void registerLuaEnv(lua_State* L);

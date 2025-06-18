@@ -4,7 +4,7 @@
 #include "java.h"
 #include "lua.hpp"
 
-#include "../Lua/luaMain.h"
+#include "../LuaEnv/Init.h"
 #include "../net/Minecraft.h"
 #include "../net/minecraft/client/LocalPlayer.h"
 
@@ -23,7 +23,7 @@ DWORD WINAPI Init(LPVOID instance) {
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
-    registerLuaFunctions(L);
+    registerLuaEnv(L);
 
     if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
         const char* err = lua_tostring(L, -1);

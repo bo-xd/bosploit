@@ -30,16 +30,13 @@
     <ClCompile Include="net\Minecraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lua\entity\LLocalPlayer.cpp">
+    <ClCompile Include="LuaEnv\Init.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lua\luaMain.cpp">
+    <ClCompile Include="LuaEnv\Services\GetService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lua\entity\LLocalPlayer.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Lua\utils\wait.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\Players.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,11 +47,17 @@
     <ClInclude Include="net\minecraft\client\LocalPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lua\luaMain.h">
+    <ClInclude Include="LuaEnv\init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lua\utils\utils.h">
+    <ClInclude Include="LuaEnv\Services\GetService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LuaEnv\Services\Players\Players.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="mappings.txt" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,7 @@
 #include "Players.h"
+#include "../../src/Java.h"
+#include "../../net/Minecraft.h"
+#include "../../net/minecraft/Players/LocalPlayer.h"
 
 int lua_getPlayer(lua_State* L) {
     JNIEnv* env = javaVmManager->GetJNIEnv();
@@ -6,12 +9,12 @@ int lua_getPlayer(lua_State* L) {
 
     if (!player || !env) {
         lua_pushnil(L);
-        return true;
+        return 1;
     }
 
     jobject globalPlayer = env->NewGlobalRef(player);
     lua_pushlightuserdata(L, globalPlayer);
-    return true;
+    return 1;
 }
 
 int lua_setSprinting(lua_State* L) {

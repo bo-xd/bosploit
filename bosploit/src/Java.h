@@ -8,17 +8,16 @@
 
 class JavaVmManager {
 public:
-    JNIEnv* env{ nullptr };
-    JavaVM* jvm{ nullptr };
-
     bool Init();
     JNIEnv* GetJNIEnv();
-
     void GetLoadedClasses();
-    jclass GetClass(std::string className);
-
+    jclass GetClass(const std::string& className);
 private:
+    JNIEnv* env{ nullptr };
+    JavaVM* jvm{ nullptr };
     std::unordered_map<std::string, jclass> classes;
+
+    friend class JavaInitializer;
 };
 
 extern std::unique_ptr<JavaVmManager> javaVmManager;

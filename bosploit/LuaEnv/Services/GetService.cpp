@@ -1,6 +1,12 @@
 #include "GetService.h"
-#include <cstring>
 
+// services
+#include "../Services/Players/Players.h"
+#include "../Services/Chat/ChatService.h"
+
+// others
+#include "../../net/minecraft/Players/LocalPlayer.h"
+#include "../../src/Java.h"
 
 int lua_GetService(lua_State* L) {
     const char* serviceName = luaL_checkstring(L, 2);
@@ -55,8 +61,12 @@ int lua_GetService(lua_State* L) {
 
         return 1;
     }
-    else if (strcmp(serviceName, "Workspace") == 0) {
+    else if (strcmp(serviceName, "ChatService") == 0) {
         lua_newtable(L);
+
+        lua_pushcfunction(L, lua_sendMessage);
+        lua_setfield(L, -2, "sendMessage");
+
         return 1;
     }
 

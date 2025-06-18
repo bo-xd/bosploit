@@ -20,20 +20,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LuaEnv\Init.cpp" />
+    <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp" />
     <ClCompile Include="LuaEnv\Services\GetService.cpp" />
+    <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp" />
     <ClCompile Include="LuaEnv\Services\Players\Players.cpp" />
-    <ClCompile Include="net\minecraft\client\LocalPlayer.cpp" />
+    <ClCompile Include="net\minecraft\Chat\Chat.cpp" />
+    <ClCompile Include="net\minecraft\Packet\Packet.cpp" />
+    <ClCompile Include="net\minecraft\Players\LocalPlayer.cpp" />
     <ClCompile Include="net\Minecraft.cpp" />
+    <ClCompile Include="net\minecraft\JNIContext.cpp" />
     <ClCompile Include="src\Java.cpp" />
     <ClCompile Include="src\Java.h" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LuaEnv\init.h" />
+    <ClInclude Include="LuaEnv\Services\Chat\ChatService.h" />
     <ClInclude Include="LuaEnv\Services\GetService.h" />
+    <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h" />
     <ClInclude Include="LuaEnv\Services\Players\Players.h" />
     <ClInclude Include="net\Minecraft.h" />
-    <ClInclude Include="net\minecraft\client\LocalPlayer.h" />
+    <ClInclude Include="net\minecraft\Chat\Chat.h" />
+    <ClInclude Include="net\minecraft\Packet\Packet.h" />
+    <ClInclude Include="net\minecraft\Players\LocalPlayer.h" />
+    <ClInclude Include="net\minecraft\JNIContext.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mappings.txt" />

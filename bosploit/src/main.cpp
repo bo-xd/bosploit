@@ -6,7 +6,9 @@
 
 #include "../LuaEnv/Init.h"
 #include "../net/Minecraft.h"
-#include "../net/minecraft/client/LocalPlayer.h"
+#include "../net/minecraft/Players/LocalPlayer.h"
+
+#include "../net/minecraft/Chat/Chat.h"
 
 FILE* file{ nullptr };
 

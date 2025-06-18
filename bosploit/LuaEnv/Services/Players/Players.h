@@ -1,8 +1,6 @@
 #pragma once
 #include "lua.hpp"
-#include "../../src/Java.h"
-#include "../../net/Minecraft.h"
-#include "../../net/minecraft/client/LocalPlayer.h"
+
 
 struct lua_State;
 

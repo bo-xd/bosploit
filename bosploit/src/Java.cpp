@@ -15,31 +15,40 @@ bool JavaVmManager::Init() {
     else if (result != JNI_OK) {
         return false;
     }
+
     return true;
+}
+
+JNIEnv* JavaVmManager::GetJNIEnv() {
+    JNIEnv* currentEnv = nullptr;
+    if (jvm->GetEnv(reinterpret_cast<void**>(&currentEnv), JNI_VERSION_21) != JNI_OK) {
+        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(&currentEnv), nullptr) != JNI_OK)
+            return nullptr;
+    }
+    return currentEnv;
 }
 
 void JavaVmManager::GetLoadedClasses() {
     jvmtiEnv* jvmti;
-    if (jvm->GetEnv((void**)&jvmti, JVMTI_VERSION_1) != JNI_OK) return;
+    if (jvm->GetEnv(reinterpret_cast<void**>(&jvmti), JVMTI_VERSION_21) != JNI_OK) return;
 
-    jclass Class = env->FindClass("java/lang/Class");
-    jmethodID getName = env->GetMethodID(Class, "getName", "()Ljava/lang/String;");
+    jclass clazz = env->FindClass("java/lang/Class");
+    jmethodID getName = env->GetMethodID(clazz, "getName", "()Ljava/lang/String;");
 
-    jclass* classptr;
-    jint amount;
-    jvmti->GetLoadedClasses(&amount, &classptr);
+    jclass* classesPtr = nullptr;
+    jint count = 0;
+    jvmti->GetLoadedClasses(&count, &classesPtr);
 
-    for (int i = 0; i < amount; i++) {
-        jstring name = (jstring)env->CallObjectMethod(classptr[i], getName);
+    for (int i = 0; i < count; ++i) {
+        jstring name = (jstring)env->CallObjectMethod(classesPtr[i], getName);
         const char* className = env->GetStringUTFChars(name, nullptr);
         env->ReleaseStringUTFChars(name, className);
     }
 }
 
-jclass JavaVmManager::GetClass(std::string className) {
+jclass JavaVmManager::GetClass(const std::string& className){
     auto it = classes.find(className);
-    if (it != classes.end())
-        return it->second;
+    if (it != classes.end()) return it->second;
 
     jclass clazz = env->FindClass(className.c_str());
     if (clazz) {
@@ -48,13 +57,4 @@ jclass JavaVmManager::GetClass(std::string className) {
     }
 
     return nullptr;
-}
-
-JNIEnv* JavaVmManager::GetJNIEnv() {
-    JNIEnv* currentEnv = nullptr;
-    if (jvm->GetEnv(reinterpret_cast<void**>(&currentEnv), JNI_VERSION_1_6) != JNI_OK) {
-        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(&currentEnv), nullptr) != JNI_OK)
-            return nullptr;
-    }
-    return currentEnv;
 }

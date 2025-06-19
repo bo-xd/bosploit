@@ -33,6 +33,9 @@ int lua_GetService(lua_State* L) {
         lua_pushlightuserdata(L, globalPlayer);
         lua_setfield(L, -2, "__userdata");
 
+		lua_pushcfunction(L, lua_dropItem);
+		lua_setfield(L, -2, "dropItem");
+
         lua_newtable(L);
 
         // Character table

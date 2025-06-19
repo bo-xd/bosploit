@@ -9,8 +9,9 @@ public:
     jobject MinecraftInstance;
 
     jobject player;
+	jclass playerClass;
     jclass entityClass;
-
+	jclass LivingEntityClass;
 
     JNIContext();
     ~JNIContext();

@@ -18,6 +18,8 @@ JNIContext::JNIContext() {
     MinecraftClass = (env) ? (jclass)env->NewGlobalRef(Minecraft::getMinecraftClass(env)) : nullptr;
     MinecraftInstance = (env) ? env->NewGlobalRef(Minecraft::getInstance(env)) : nullptr;
     entityClass = (env) ? (jclass)env->NewGlobalRef(env->FindClass("bxe")) : nullptr;
+    LivingEntityClass = (env) ? (jclass)env->NewGlobalRef(env->FindClass("byf")) : nullptr;
+	playerClass = (env) ? (jclass)env->NewGlobalRef(env->FindClass("gqm")) : nullptr;
 }
 
 

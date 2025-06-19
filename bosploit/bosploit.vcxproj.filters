@@ -36,7 +36,7 @@
     <ClCompile Include="LuaEnv\Services\GetService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEnv\Services\Players\Players.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\LPlayers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="net\minecraft\JNIContext.cpp">
@@ -52,6 +52,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="net\minecraft\Players\Position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="net\minecraft\Players\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="net\minecraft\Players\Actions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaEnv\Services\Players\LActions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaEnv\Services\Players\LPosition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaEnv\Services\Players\LState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,8 +8,6 @@
 #include "../net/Minecraft.h"
 #include "../net/minecraft/Players/LocalPlayer.h"
 
-#include "../net/minecraft/Chat/Chat.h"
-
 FILE* file{ nullptr };
 
 DWORD WINAPI Init(LPVOID instance) {
@@ -32,7 +30,7 @@ DWORD WINAPI Init(LPVOID instance) {
         printf("Lua error: %s\n", err);
         lua_pop(L, 1);
     }
-
+    
     while (!(GetAsyncKeyState(VK_DELETE))) {
         Sleep(100);
     }

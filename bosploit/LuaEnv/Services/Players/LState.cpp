@@ -3,6 +3,8 @@
 #include "../../net/Minecraft.h"
 #include "../../net/minecraft/Players/LocalPlayer.h"
 
+#include "../../../net/minecraft/Players/EntityPlayerSP.h"
+
 int lua_setSprinting(lua_State* L) {
     if (!lua_isboolean(L, 2)) {
         return luaL_error(L, "Expected boolean argument for setSprinting");
@@ -11,14 +13,15 @@ int lua_setSprinting(lua_State* L) {
     bool sprinting = lua_toboolean(L, 2);
 
     lua_getfield(L, 1, "__userdata");
-    jobject player = static_cast<jobject>(lua_touserdata(L, -1));
+    jobject playerObj = static_cast<jobject>(lua_touserdata(L, -1));
     lua_pop(L, 1);
 
-    if (!player) {
+    if (!playerObj) {
         return luaL_error(L, "Invalid player userdata");
     }
 
-    LocalPlayer::setSprinting(sprinting);
+    EntityPlayerSP playerWrapper;
+    playerWrapper.setSprinting(sprinting);
 
     return 0;
 }

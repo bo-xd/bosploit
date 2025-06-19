@@ -30,6 +30,8 @@
     <ClCompile Include="net\minecraft\Chat\Chat.cpp" />
     <ClCompile Include="net\minecraft\Packet\Packet.cpp" />
     <ClCompile Include="net\minecraft\Players\Actions.cpp" />
+    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp" />
+    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h" />
     <ClCompile Include="net\minecraft\Players\LocalPlayer.cpp" />
     <ClCompile Include="net\Minecraft.cpp" />
     <ClCompile Include="net\minecraft\JNIContext.cpp" />

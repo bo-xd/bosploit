@@ -81,6 +81,12 @@
     <ClCompile Include="sdk\Mappings\Vanilla1215.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net\Minecraft.h">

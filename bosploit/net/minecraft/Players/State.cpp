@@ -1,6 +1,9 @@
 #include "LocalPlayer.h"
 #include "../JNIContext.h"
 
+#include "../../Minecraft.h"
+#include "EntityPlayerSP.h"
+
 bool LocalPlayer::setSprinting(bool sprinting) {
     JNIContext ctx;
     if (!ctx.isValid()) return false;

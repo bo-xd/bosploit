@@ -1,12 +1,37 @@
 #include "Minecraft.h"
+#include <iostream>
 
 Minecraft::Minecraft() : AbstractClass("Minecraft") {
     getMinecraftMethod = getMethodID("getMinecraft");
-    if (!getMinecraftMethod) {
-        std::cerr << "[-] Failed to resolve getMinecraft method!\n";
-    }
+    getPlayerMethod = getFieldID("player");
 }
 
 jobject Minecraft::getMinecraft() {
-    return getObject(getMinecraftMethod);
+    JNIEnv* env = javaVmManager->GetJNIEnv();
+    if (!env || !getMinecraftMethod) return nullptr;
+
+    jobject mc = env->CallStaticObjectMethod(cls, getMinecraftMethod);
+    if (env->ExceptionCheck()) {
+        env->ExceptionDescribe();
+        env->ExceptionClear();
+        return nullptr;
+    }
+    return mc;
 }
+
+jobject Minecraft::getPlayer() {
+    JNIEnv* env = javaVmManager->GetJNIEnv();
+    if (!env || !getPlayerMethod) return nullptr;
+
+    jobject mcInstance = getMinecraft();
+    if (!mcInstance) return nullptr;
+
+    jobject player = env->GetObjectField(mcInstance, getPlayerMethod);
+    if (env->ExceptionCheck()) {
+        env->ExceptionDescribe();
+        env->ExceptionClear();
+        return nullptr;
+    }
+    return player;
+}
+

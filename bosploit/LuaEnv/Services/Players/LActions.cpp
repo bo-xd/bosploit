@@ -20,6 +20,6 @@ int lua_dropItem(lua_State* L) {
 
     LocalPlayer::drop(drop);
 
-    lua_pushboolean(L, drop);  // push the bool to Lua stack
-    return 1;                  // returning 1 value
+    lua_pushboolean(L, drop);
+    return 1;
 }

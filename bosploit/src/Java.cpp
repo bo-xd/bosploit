@@ -46,7 +46,7 @@ void JavaVmManager::GetLoadedClasses() {
     }
 }
 
-jclass JavaVmManager::GetClass(const std::string& className){
+jclass JavaVmManager::GetClass(const std::string& className) {
     auto it = classes.find(className);
     if (it != classes.end()) return it->second;
 

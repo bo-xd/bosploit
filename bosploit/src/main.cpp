@@ -4,9 +4,11 @@
 #include "java.h"
 #include "lua.hpp"
 
+#include "../sdk/Mapping.h"
 #include "../LuaEnv/Init.h"
+
 #include "../net/Minecraft.h"
-#include "../net/minecraft/Players/LocalPlayer.h"
+
 
 FILE* file{ nullptr };
 
@@ -20,10 +22,21 @@ DWORD WINAPI Init(LPVOID instance) {
         return 1;
     }
 
+    Mapping::setup();
+
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
     registerLuaEnv(L);
+    Minecraft mc;
+    jobject mcInstance = mc.getMinecraft();
+
+    if (!mcInstance) {
+        std::cerr << "[-] getMinecraft() returned nullptr" << std::endl;
+        return 1;
+    }
+    std::cout << "[+] getMinecraft() succeeded" << std::endl;
+
 
     if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
         const char* err = lua_tostring(L, -1);
@@ -53,3 +66,4 @@ BOOL APIENTRY DllMain(HMODULE instance, DWORD reason, LPVOID reserved) {
 
     return TRUE;
 }
+

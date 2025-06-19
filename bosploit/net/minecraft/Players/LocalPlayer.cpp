@@ -5,13 +5,21 @@
 
 jobject LocalPlayer::getPlayer() {
     JNIEnv* env = javaVmManager->GetJNIEnv();
-    jobject mcInstance = Minecraft::getInstance(env);
-    jclass mcClass = Minecraft::getMinecraftClass(env);
 
-    if (!mcInstance || !mcClass) return nullptr;
+    Minecraft mc;
+    jobject mcInstance = mc.getMinecraft();
+    jclass mcClass = mc.getClass();
+
+    if (!mcInstance || !mcClass) {
+        std::cerr << "[-] Failed to get Minecraft instance or class.\n";
+        return nullptr;
+    }
 
     jfieldID playerField = env->GetFieldID(mcClass, "t", "Lgqm;");
-    if (!playerField) return nullptr;
+    if (!playerField) {
+        std::cerr << "[-] Failed to find 't' field in Minecraft class.\n";
+        return nullptr;
+    }
 
     return env->GetObjectField(mcInstance, playerField);
-};
+}

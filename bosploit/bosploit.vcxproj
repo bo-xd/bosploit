@@ -35,6 +35,9 @@
     <ClCompile Include="net\minecraft\JNIContext.cpp" />
     <ClCompile Include="net\minecraft\Players\Position.cpp" />
     <ClCompile Include="net\minecraft\Players\State.cpp" />
+    <ClCompile Include="sdk\AbstractClass.cpp" />
+    <ClCompile Include="sdk\Mapping.cpp" />
+    <ClCompile Include="sdk\Mappings\Vanilla1215.h" />
     <ClCompile Include="src\Java.cpp" />
     <ClCompile Include="src\Java.h" />
     <ClCompile Include="src\main.cpp" />
@@ -50,6 +53,10 @@
     <ClInclude Include="net\minecraft\Packet\Packet.h" />
     <ClInclude Include="net\minecraft\Players\LocalPlayer.h" />
     <ClInclude Include="net\minecraft\JNIContext.h" />
+    <ClInclude Include="sdk\AbstractClass.h" />
+    <ClInclude Include="sdk\CM.h" />
+    <ClInclude Include="sdk\Mapping.h" />
+    <ClInclude Include="sdk\Mem.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mappings.txt" />

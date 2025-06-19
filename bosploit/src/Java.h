@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <jni.h>
 #include <jvmti.h>
 #include <unordered_map>

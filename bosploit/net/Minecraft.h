@@ -1,11 +1,11 @@
 #pragma once
-#include <jni.h>
+#include "../sdk/AbstractClass.h"
 
-class Minecraft {
+class Minecraft : public AbstractClass {
 public:
-    static jclass getMinecraftClass(JNIEnv* env);
-    static jstring getVersion(JNIEnv* env);
-    static jobject getInstance(JNIEnv* env);
+    explicit Minecraft();
+    jobject getMinecraft();
+
 private:
-    static jclass minecraftClass;
+    jmethodID getMinecraftMethod;
 };

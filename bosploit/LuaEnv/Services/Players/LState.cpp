@@ -1,8 +1,4 @@
 #include "Players.h"
-#include "../../src/Java.h"
-#include "../../net/Minecraft.h"
-#include "../../net/minecraft/Players/LocalPlayer.h"
-
 #include "../../../net/minecraft/Players/EntityPlayerSP.h"
 
 int lua_setSprinting(lua_State* L) {
@@ -26,7 +22,6 @@ int lua_setSprinting(lua_State* L) {
     return 0;
 }
 
-
 int lua_isSprinting(lua_State* L) {
     lua_getfield(L, 1, "__userdata");
     jobject player = static_cast<jobject>(lua_touserdata(L, -1));
@@ -37,8 +32,8 @@ int lua_isSprinting(lua_State* L) {
         return 1;
     }
 
-    bool result = false;
-    LocalPlayer::isSprinting(&result);
+    EntityPlayerSP playerWrapper;
+    bool result = playerWrapper.isSprinting();
 
     lua_pushboolean(L, result);
     return 1;
@@ -54,8 +49,8 @@ int lua_isCrouching(lua_State* L) {
         return 1;
     }
 
-    bool result = false;
-    LocalPlayer::isCrouching(&result);
+    EntityPlayerSP playerWrapper;
+    bool result = playerWrapper.isCrouching();
 
     lua_pushboolean(L, result);
     return 1;

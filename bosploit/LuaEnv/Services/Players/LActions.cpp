@@ -1,7 +1,5 @@
 #include "Players.h"
-#include "../../src/Java.h"
-#include "../../net/Minecraft.h"
-#include "../../net/minecraft/Players/LocalPlayer.h"
+#include "../../../net/minecraft/Players/EntityPlayer.h"
 
 int lua_dropItem(lua_State* L) {
     if (!lua_isboolean(L, 2)) {
@@ -18,8 +16,8 @@ int lua_dropItem(lua_State* L) {
         return luaL_error(L, "Invalid player userdata");
     }
 
-    LocalPlayer::drop(drop);
+    EntityPlayer playerWrapper;
+    playerWrapper.drop(drop);
 
-    lua_pushboolean(L, drop);
-    return 1;
+    return 0;
 }

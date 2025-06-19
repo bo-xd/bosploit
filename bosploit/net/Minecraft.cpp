@@ -11,11 +11,6 @@ jobject Minecraft::getMinecraft() {
     if (!env || !getMinecraftMethod) return nullptr;
 
     jobject mc = env->CallStaticObjectMethod(cls, getMinecraftMethod);
-    if (env->ExceptionCheck()) {
-        env->ExceptionDescribe();
-        env->ExceptionClear();
-        return nullptr;
-    }
     return mc;
 }
 
@@ -27,11 +22,6 @@ jobject Minecraft::getPlayer() {
     if (!mcInstance) return nullptr;
 
     jobject player = env->GetObjectField(mcInstance, getPlayerMethod);
-    if (env->ExceptionCheck()) {
-        env->ExceptionDescribe();
-        env->ExceptionClear();
-        return nullptr;
-    }
     return player;
 }
 

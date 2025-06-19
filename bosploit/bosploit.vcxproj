@@ -28,15 +28,10 @@
     <ClCompile Include="LuaEnv\Services\Players\LPosition.cpp" />
     <ClCompile Include="LuaEnv\Services\Players\LState.cpp" />
     <ClCompile Include="net\minecraft\Chat\Chat.cpp" />
-    <ClCompile Include="net\minecraft\Packet\Packet.cpp" />
-    <ClCompile Include="net\minecraft\Players\Actions.cpp" />
+    <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h" />
-    <ClCompile Include="net\minecraft\Players\LocalPlayer.cpp" />
     <ClCompile Include="net\Minecraft.cpp" />
-    <ClCompile Include="net\minecraft\JNIContext.cpp" />
-    <ClCompile Include="net\minecraft\Players\Position.cpp" />
-    <ClCompile Include="net\minecraft\Players\State.cpp" />
     <ClCompile Include="sdk\AbstractClass.cpp" />
     <ClCompile Include="sdk\Mapping.cpp" />
     <ClCompile Include="sdk\Mappings\Vanilla1215.h" />
@@ -52,9 +47,7 @@
     <ClInclude Include="LuaEnv\Services\Players\Players.h" />
     <ClInclude Include="net\Minecraft.h" />
     <ClInclude Include="net\minecraft\Chat\Chat.h" />
-    <ClInclude Include="net\minecraft\Packet\Packet.h" />
-    <ClInclude Include="net\minecraft\Players\LocalPlayer.h" />
-    <ClInclude Include="net\minecraft\JNIContext.h" />
+    <ClInclude Include="net\minecraft\Players\EntityPlayer.h" />
     <ClInclude Include="sdk\AbstractClass.h" />
     <ClInclude Include="sdk\CM.h" />
     <ClInclude Include="sdk\Mapping.h" />

@@ -94,3 +94,4 @@ jmethodID AbstractClass::getMethodIDByDetails(const char* name, const char* sig,
     if (isStatic) return env->GetStaticMethodID(cls, name, sig);
     return env->GetMethodID(cls, name, sig);
 }
+

@@ -4,8 +4,8 @@
 #include "../Services/Players/Players.h"
 #include "../Services/Chat/ChatService.h"
 
-// others
-#include "../../net/minecraft/Players/LocalPlayer.h"
+// utils
+#include "../../net/Minecraft.h"
 #include "../../src/Java.h"
 
 int lua_GetService(lua_State* L) {
@@ -18,7 +18,8 @@ int lua_GetService(lua_State* L) {
     }
 
     if (strcmp(serviceName, "Players") == 0) {
-        jobject player = LocalPlayer::getPlayer();
+        Minecraft mc;
+        jobject player = mc.getPlayer();
         if (!player) {
             lua_pushnil(L);
             return 1;

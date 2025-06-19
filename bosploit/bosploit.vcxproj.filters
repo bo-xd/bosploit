@@ -24,9 +24,6 @@
     <ClCompile Include="src\Java.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="net\minecraft\Players\LocalPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="net\Minecraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,28 +36,13 @@
     <ClCompile Include="LuaEnv\Services\Players\LPlayers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="net\minecraft\JNIContext.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="net\minecraft\Chat\Chat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="net\minecraft\Packet\Packet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="net\minecraft\Players\Position.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="net\minecraft\Players\State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="net\minecraft\Players\Actions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaEnv\Services\Players\LActions.cpp">
@@ -87,12 +69,12 @@
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net\Minecraft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="net\minecraft\Players\LocalPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaEnv\init.h">
@@ -104,16 +86,10 @@
     <ClInclude Include="LuaEnv\Services\Players\Players.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="net\minecraft\JNIContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="net\minecraft\Chat\Chat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaEnv\Services\Chat\ChatService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="net\minecraft\Packet\Packet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h">
@@ -129,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sdk\CM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="net\minecraft\Players\EntityPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

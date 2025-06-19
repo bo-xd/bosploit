@@ -31,13 +31,6 @@ DWORD WINAPI Init(LPVOID instance) {
     Minecraft mc;
     jobject mcInstance = mc.getMinecraft();
 
-    if (!mcInstance) {
-        std::cerr << "[-] getMinecraft() returned nullptr" << std::endl;
-        return 1;
-    }
-    std::cout << "[+] getMinecraft() succeeded" << std::endl;
-
-
     if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
         const char* err = lua_tostring(L, -1);
         printf("Lua error: %s\n", err);

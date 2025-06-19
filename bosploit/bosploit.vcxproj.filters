@@ -33,10 +33,7 @@
     <ClCompile Include="LuaEnv\Services\GetService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEnv\Services\Players\LPlayers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="net\minecraft\Chat\Chat.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\Players.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp">
@@ -45,13 +42,13 @@
     <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEnv\Services\Players\LActions.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\Actions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEnv\Services\Players\LPosition.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\Position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaEnv\Services\Players\LState.cpp">
+    <ClCompile Include="LuaEnv\Services\Players\State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdk\AbstractClass.cpp">
@@ -84,9 +81,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaEnv\Services\Players\Players.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="net\minecraft\Chat\Chat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaEnv\Services\Chat\ChatService.h">

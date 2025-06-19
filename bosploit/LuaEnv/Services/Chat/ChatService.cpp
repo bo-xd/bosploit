@@ -1,7 +1,5 @@
 #include "ChatService.h"
-
-#include "../../src/Java.h"
-#include "../../net/minecraft/Chat/Chat.h"
+#include "../../../net/Minecraft.h"
 
 int lua_sendMessage(lua_State* L) {
     if (!lua_isstring(L, 2)) {
@@ -9,7 +7,8 @@ int lua_sendMessage(lua_State* L) {
     }
 
     const char* message = lua_tostring(L, 2);
-    Chat::sendMessage(message);
+    Minecraft mc;
+    mc.sendChat(message);
 
     return 0;
 }

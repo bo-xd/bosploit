@@ -23,11 +23,10 @@
     <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp" />
     <ClCompile Include="LuaEnv\Services\GetService.cpp" />
     <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\LActions.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\LPlayers.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\LPosition.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\LState.cpp" />
-    <ClCompile Include="net\minecraft\Chat\Chat.cpp" />
+    <ClCompile Include="LuaEnv\Services\Players\Actions.cpp" />
+    <ClCompile Include="LuaEnv\Services\Players\Players.cpp" />
+    <ClCompile Include="LuaEnv\Services\Players\Position.cpp" />
+    <ClCompile Include="LuaEnv\Services\Players\State.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h" />
@@ -46,7 +45,6 @@
     <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h" />
     <ClInclude Include="LuaEnv\Services\Players\Players.h" />
     <ClInclude Include="net\Minecraft.h" />
-    <ClInclude Include="net\minecraft\Chat\Chat.h" />
     <ClInclude Include="net\minecraft\Players\EntityPlayer.h" />
     <ClInclude Include="sdk\AbstractClass.h" />
     <ClInclude Include="sdk\CM.h" />

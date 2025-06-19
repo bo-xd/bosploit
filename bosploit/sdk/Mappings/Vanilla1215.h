@@ -18,7 +18,7 @@ struct Vanilla1215 {
         // minecraft
         m = Mapping::make("Minecraft", "fqq");
         Mapping::method(m, "getMinecraft", "Q", "()Lfqq;", true);
+        Mapping::method(m, "getConnection", "L", "()Lglp;", false);
         Mapping::field(m, "player", "t", "Lgqm;", false);
-
     }
 };

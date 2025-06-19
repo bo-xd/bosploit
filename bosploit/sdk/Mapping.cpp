@@ -1,5 +1,6 @@
 #include "Mapping.h"
 #include "../sdk/Mappings/Vanilla1215.h"
+#include "../sdk/Mappings/Fabric1215.h"
 
 std::map<std::string, CM*> lookup;
 
@@ -11,7 +12,6 @@ CM* Mapping::getClass(const char *key) {
 const char *Mapping::getClassName(const char *key) {
 	return getClass(key)->name;
 }
-
 
 void Mapping::setup() {
 	Vanilla1215::setup();

@@ -33,6 +33,7 @@
     <ClCompile Include="net\Minecraft.cpp" />
     <ClCompile Include="sdk\AbstractClass.cpp" />
     <ClCompile Include="sdk\Mapping.cpp" />
+    <ClCompile Include="sdk\Mappings\Fabric1215.h" />
     <ClCompile Include="sdk\Mappings\Vanilla1215.h" />
     <ClCompile Include="src\Java.cpp" />
     <ClCompile Include="src\Java.h" />

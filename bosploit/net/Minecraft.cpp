@@ -37,7 +37,6 @@ jobject Minecraft::getConnection() {
     return connection;
 }
 
-
 void Minecraft::sendChat(const std::string& message) {
     JNIEnv* env = javaVmManager->GetJNIEnv();
     if (!env) return;

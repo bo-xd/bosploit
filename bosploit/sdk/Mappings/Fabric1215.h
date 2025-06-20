@@ -17,7 +17,7 @@ struct Fabric1215 {
         Mapping::method(m, "drop", "method_7290", "(Z)Z", false);
         // minecraft
         m = Mapping::make("Minecraft", "net.minecraft.class_310");
-        Mapping::method(m, "getMinecraft", "method_1551", "()Lfqq;", true);
+        Mapping::method(m, "getMinecraft", "method_1551", "()Lnet/minecraft/class_310;", true);
         Mapping::method(m, "getConnection", "method_1562", "()Lglp;", false);
         Mapping::field(m, "player", "field_1724", "Lgqm;", false);
     }

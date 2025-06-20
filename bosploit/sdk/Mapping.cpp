@@ -14,7 +14,7 @@ const char *Mapping::getClassName(const char *key) {
 }
 
 void Mapping::setup() {
-	Vanilla1215::setup();
+	Fabric1215::setup();
 }
 
 void Mapping::field(CM *cm, const char* name, const char* desc, bool isStatic) {

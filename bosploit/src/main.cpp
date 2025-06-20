@@ -7,8 +7,7 @@
 #include "../sdk/Mapping.h"
 #include "../LuaEnv/Init.h"
 
-#include "../net/Minecraft.h"
-
+#include "../sdk/AbstractClass.h"
 
 FILE* file{ nullptr };
 
@@ -23,13 +22,15 @@ DWORD WINAPI Init(LPVOID instance) {
     }
 
     Mapping::setup();
+    AbstractClass myClass;
+    myClass.GetLoadedClasses();
+    std::cout << "[+] cached all classes" << std::endl;
+
 
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
     registerLuaEnv(L);
-    Minecraft mc;
-    jobject mcInstance = mc.getMinecraft();
 
     if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
         const char* err = lua_tostring(L, -1);

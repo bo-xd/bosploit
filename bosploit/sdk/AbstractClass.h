@@ -1,17 +1,23 @@
 #pragma once
 
 #include <jvmti.h>
+#include <mutex>
+#include <unordered_map>
+
 #include "CM.h"
 #include "Mapping.h"
 #include "../src/Java.h"
 
 class AbstractClass {
 public:
+    AbstractClass();
     AbstractClass(const char* clsName);
 
-    jobject getClassLoader();
     jclass getClass(const char* clsName, const char* loadertype);
     jclass getClass();
+
+    void GetLoadedClasses();
+    jclass getClassLoaded(const std::string& className);
 
     //Boolean
     template <class T> jboolean getBoolean(jobject parent, jmethodID method, T values...) { return javaVmManager->GetJNIEnv()->CallBooleanMethod(parent, method, values); }
@@ -132,4 +138,7 @@ protected:
 private:
     jfieldID getFieldIDByDetails(const char* name, const char* sig, bool isStatic);
     jmethodID getMethodIDByDetails(const char* name, const char* sig, bool isStatic);
+
+    std::unordered_map<std::string, jclass> loadedClasses;
+    std::mutex classesMutex;
 };

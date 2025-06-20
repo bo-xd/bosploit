@@ -8,37 +8,37 @@
 #include "../LuaEnv/Init.h"
 
 #include "../sdk/AbstractClass.h"
+#include "../sdk/ClassLoader.h"
 
 FILE* file{ nullptr };
 
 DWORD WINAPI Init(LPVOID instance) {
     AllocConsole();
-    freopen_s(&file, "CONOUT$", "w", stdout);
-    freopen_s(&file, "CONOUT$", "w", stderr);
+    FILE* outFile = nullptr;
+    freopen_s(&outFile, "CONOUT$", "w", stdout);
+    freopen_s(&outFile, "CONOUT$", "w", stderr);
 
     if (!javaVmManager->Init()) {
         std::cerr << "[-] Failed to initialize Java VM Manager." << std::endl;
+        FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 1);
         return 1;
     }
 
     Mapping::setup();
-    AbstractClass myClass;
-    myClass.GetLoadedClasses();
-    std::cout << "[+] cached all classes" << std::endl;
-
+    g_classLoader->GetLoadedClasses();
+    std::cout << "[*] Loaded classes cached" << std::endl;
 
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
-
     registerLuaEnv(L);
 
     if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
         const char* err = lua_tostring(L, -1);
-        printf("Lua error: %s\n", err);
+        std::cerr << "Lua error: " << err << std::endl;
         lua_pop(L, 1);
     }
-    
-    while (!(GetAsyncKeyState(VK_DELETE))) {
+
+    while (!(GetAsyncKeyState(VK_DELETE) & 1)) {
         Sleep(100);
     }
 
@@ -47,8 +47,9 @@ DWORD WINAPI Init(LPVOID instance) {
     std::cout << "[*] Uninjecting\n";
     FreeConsole();
     FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 0);
-    return false;
+    return 0;
 }
+
 
 BOOL APIENTRY DllMain(HMODULE instance, DWORD reason, LPVOID reserved) {
     DisableThreadLibraryCalls(instance);

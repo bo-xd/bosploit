@@ -51,15 +51,6 @@
     <ClCompile Include="LuaEnv\Services\Players\State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\AbstractClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\Mapping.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\Mappings\Vanilla1215.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,10 +60,10 @@
     <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\Mappings\Fabric1215.h">
+    <ClCompile Include="ClassLoader\ClassLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\ClassLoader.cpp">
+    <ClCompile Include="Mappings\Mapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,22 +86,19 @@
     <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\AbstractClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\Mapping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\Mem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\CM.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="net\minecraft\Players\EntityPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\ClassLoader.h">
+    <ClInclude Include="ClassLoader\ClassLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mappings\Mapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mappings\Fabric\Fabric1215.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mappings\Vanilla\Vanilla1215.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,21 @@
 #pragma once
-#include "../sdk/AbstractClass.h"
+#include <jni.h>
+#include <string>
 
-class Minecraft : public AbstractClass {
+class Minecraft {
 public:
-    explicit Minecraft();
+    Minecraft();
+
     jobject getMinecraft();
     jobject getPlayer();
     jobject getConnection();
 
     void sendChat(const std::string& message);
+
 private:
-    jmethodID getMinecraftMethod;
-    jmethodID getConnectionMethod;
-    jfieldID getPlayerMethod;
+    jclass minecraftClass = nullptr;
+
+    jmethodID getMinecraftMethod = nullptr;
+    jmethodID getConnectionMethod = nullptr;
+    jfieldID getPlayerField = nullptr;
 };

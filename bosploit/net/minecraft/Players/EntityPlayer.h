@@ -1,14 +1,16 @@
 #pragma once
-#pragma once
-#include "../../sdk/AbstractClass.h"
-#include "../../Minecraft.h"
+#include <jni.h>
+#include <string>
 
-class EntityPlayer : public AbstractClass {
+class Minecraft;
+
+class EntityPlayer {
 public:
-	explicit EntityPlayer();
-	void drop(jboolean fullstack);
-private:
-	Minecraft* mc;
-	jmethodID mdDrop;
-};
+    EntityPlayer();
 
+    void drop(jboolean fullstack);
+
+private:
+    Minecraft* mc;
+    jmethodID dropMethod = nullptr;
+};

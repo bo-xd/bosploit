@@ -4,29 +4,42 @@
 #include "java.h"
 #include "lua.hpp"
 
-#include "../sdk/Mapping.h"
 #include "../LuaEnv/Init.h"
 
-#include "../sdk/AbstractClass.h"
-#include "../sdk/ClassLoader.h"
+#include "../ClassLoader/ClassLoader.h"
+#include "../Mappings/Mapping.h"
+
+#include "../Mappings/Fabric/Fabric1215.h"
+#include "../Mappings/Vanilla/Vanilla1215.h"
+
+#include "../net/minecraft/Players/EntityPlayerSP.h"
 
 FILE* file{ nullptr };
+std::unique_ptr<ClassLoader> g_classLoader;
+std::unique_ptr<Mapping> g_mapping;
 
-DWORD WINAPI Init(LPVOID instance) {
+void MainThread(HMODULE module) {
     AllocConsole();
-    FILE* outFile = nullptr;
-    freopen_s(&outFile, "CONOUT$", "w", stdout);
-    freopen_s(&outFile, "CONOUT$", "w", stderr);
+    freopen_s(&file, "CONOUT$", "w", stdout);
+    freopen_s(&file, "CONOUT$", "w", stderr);
+    std::cout << "[*] Bosploit Injected" << std::endl;
+    g_classLoader = std::make_unique<ClassLoader>();
 
-    if (!javaVmManager->Init()) {
-        std::cerr << "[-] Failed to initialize Java VM Manager." << std::endl;
-        FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 1);
-        return 1;
+    if (!g_classLoader->Initialize()) {
+        std::cerr << "[!] Failed to initialize ClassLoader" << std::endl;
+        FreeLibraryAndExitThread(module, 0);
+        return;
     }
-
-    Mapping::setup();
+    
+    std::cout << "[*] JVM, JNI, and JVMTI environments acquired!" << std::endl;
     g_classLoader->GetLoadedClasses();
     std::cout << "[*] Loaded classes cached" << std::endl;
+
+    g_mapping = std::make_unique<Mapping>();
+
+    Vanilla1215Mappings::setup();
+
+    g_mapping->Initialize(g_classLoader->env, g_classLoader.get());
 
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
@@ -46,19 +59,18 @@ DWORD WINAPI Init(LPVOID instance) {
 
     std::cout << "[*] Uninjecting\n";
     FreeConsole();
-    FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 0);
-    return 0;
+    FreeLibraryAndExitThread(module, 0);
 }
 
 
-BOOL APIENTRY DllMain(HMODULE instance, DWORD reason, LPVOID reserved) {
-    DisableThreadLibraryCalls(instance);
-
+BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved) {
     if (reason == DLL_PROCESS_ATTACH) {
-        HANDLE hThread = CreateThread(nullptr, 0, Init, instance, 0, nullptr);
-        if (hThread) CloseHandle(hThread);
+        DisableThreadLibraryCalls(module);
+        CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)MainThread, module, 0, nullptr);
     }
-
+    else if (reason == DLL_PROCESS_DETACH) {
+        g_mapping.reset();
+        g_classLoader.reset();
+    }
     return TRUE;
 }
-

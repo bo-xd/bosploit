@@ -1,55 +1,56 @@
 #include "Minecraft.h"
+#include "../Mappings/Mapping.h"
 #include <iostream>
 
-Minecraft::Minecraft() : AbstractClass("Minecraft") {
-    getMinecraftMethod = getMethodID("getMinecraft");
-    getConnectionMethod = getMethodID("getConnection");
-    getPlayerMethod = getFieldID("player");
+#include "../src/Java.h"
+
+Minecraft::Minecraft() {
+    getMinecraftMethod = Mapping::GetMethod("Minecraft", "getMinecraft");
+    getConnectionMethod = Mapping::GetMethod("Minecraft", "getConnection");
+    getPlayerField = Mapping::GetField("Minecraft", "player");
+
+    minecraftClass = Mapping::GetClass("Minecraft");
+
+    if (!minecraftClass || !getMinecraftMethod || !getConnectionMethod || !getPlayerField) {
+        std::cerr << "[!] Failed to initialize Minecraft mappings" << std::endl;
+    }
 }
 
 jobject Minecraft::getMinecraft() {
-    JNIEnv* env = javaVmManager->GetJNIEnv();
-    if (!env || !getMinecraftMethod) return nullptr;
+    if (!minecraftClass || !getMinecraftMethod) return nullptr;
 
-    jobject mc = env->CallStaticObjectMethod(cls, getMinecraftMethod);
-    return mc;
+    return g_classLoader->env->CallStaticObjectMethod(minecraftClass, getMinecraftMethod);
 }
 
 jobject Minecraft::getPlayer() {
-    JNIEnv* env = javaVmManager->GetJNIEnv();
-    if (!env || !getPlayerMethod) return nullptr;
+    if (!getPlayerField) return nullptr;
 
     jobject mcInstance = getMinecraft();
     if (!mcInstance) return nullptr;
 
-    jobject player = env->GetObjectField(mcInstance, getPlayerMethod);
-    return player;
+    return g_classLoader->env->GetObjectField(mcInstance, getPlayerField);
 }
 
 jobject Minecraft::getConnection() {
-    JNIEnv* env = javaVmManager->GetJNIEnv();
-    if (!env || !getConnectionMethod) return nullptr;
+    if (!getConnectionMethod) return nullptr;
 
     jobject mcInstance = getMinecraft();
     if (!mcInstance) return nullptr;
 
-    jobject connection = env->CallObjectMethod(mcInstance, getConnectionMethod);
-    return connection;
+    return g_classLoader->env->CallObjectMethod(mcInstance, getConnectionMethod);
 }
 
 void Minecraft::sendChat(const std::string& message) {
-    JNIEnv* env = javaVmManager->GetJNIEnv();
-    if (!env) return;
-
     jobject connection = getConnection();
     if (!connection) return;
 
-    jclass connectionClass = env->GetObjectClass(connection);
+    jclass connectionClass = g_classLoader->env->GetObjectClass(connection);
     if (!connectionClass) return;
-    jmethodID sendChatMethod = env->GetMethodID(connectionClass, "b", "(Ljava/lang/String;)V");
+
+    jmethodID sendChatMethod = g_classLoader->env->GetMethodID(connectionClass, "b", "(Ljava/lang/String;)V");
     if (!sendChatMethod) return;
 
-    jstring jMessage = env->NewStringUTF(message.c_str());
-    env->CallVoidMethod(connection, sendChatMethod, jMessage);
-    env->DeleteLocalRef(jMessage);
+    jstring jMessage = g_classLoader->env->NewStringUTF(message.c_str());
+    g_classLoader->env->CallVoidMethod(connection, sendChatMethod, jMessage);
+    g_classLoader->env->DeleteLocalRef(jMessage);
 }

@@ -1,24 +1,27 @@
 #pragma once
-#include "../../sdk/AbstractClass.h"
-#include "../../Minecraft.h"
+#include <jni.h>
 
-class EntityPlayerSP : public AbstractClass {
+class Minecraft;
+
+class EntityPlayerSP {
 public:
-    explicit EntityPlayerSP();
-    void setSprinting(jboolean sprinting);
+    EntityPlayerSP();
 
+    void setSprinting(jboolean sprinting);
     bool isSprinting();
     bool isCrouching();
 
     double x();
     double y();
     double z();
+
 private:
     Minecraft* mc;
-    jmethodID mdSetSprinting;
-    jmethodID mdisSprinting;
-    jmethodID mdisCrouching;
-    jmethodID mdx;
-    jmethodID mdy;
-    jmethodID mdz;
+
+    jmethodID methodSetSprinting = nullptr;
+    jmethodID methodIsSprinting = nullptr;
+    jmethodID methodIsCrouching = nullptr;
+    jmethodID methodX = nullptr;
+    jmethodID methodY = nullptr;
+    jmethodID methodZ = nullptr;
 };

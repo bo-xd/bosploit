@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClassLoader\ClassLoader.cpp" />
     <ClCompile Include="LuaEnv\Init.cpp" />
     <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp" />
     <ClCompile Include="LuaEnv\Services\GetService.cpp" />
@@ -27,32 +28,27 @@
     <ClCompile Include="LuaEnv\Services\Players\Players.cpp" />
     <ClCompile Include="LuaEnv\Services\Players\Position.cpp" />
     <ClCompile Include="LuaEnv\Services\Players\State.cpp" />
+    <ClCompile Include="Mappings\Mapping.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp" />
     <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h" />
     <ClCompile Include="net\Minecraft.cpp" />
-    <ClCompile Include="sdk\AbstractClass.cpp" />
-    <ClCompile Include="sdk\ClassLoader.cpp" />
-    <ClCompile Include="sdk\Mapping.cpp" />
-    <ClCompile Include="sdk\Mappings\Fabric1215.h" />
-    <ClCompile Include="sdk\Mappings\Vanilla1215.h" />
     <ClCompile Include="src\Java.cpp" />
     <ClCompile Include="src\Java.h" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClassLoader\ClassLoader.h" />
     <ClInclude Include="LuaEnv\init.h" />
     <ClInclude Include="LuaEnv\Services\Chat\ChatService.h" />
     <ClInclude Include="LuaEnv\Services\GetService.h" />
     <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h" />
     <ClInclude Include="LuaEnv\Services\Players\Players.h" />
+    <ClInclude Include="Mappings\Fabric\Fabric1215.h" />
+    <ClInclude Include="Mappings\Mapping.h" />
+    <ClInclude Include="Mappings\Vanilla\Vanilla1215.h" />
     <ClInclude Include="net\Minecraft.h" />
     <ClInclude Include="net\minecraft\Players\EntityPlayer.h" />
-    <ClInclude Include="sdk\AbstractClass.h" />
-    <ClInclude Include="sdk\ClassLoader.h" />
-    <ClInclude Include="sdk\CM.h" />
-    <ClInclude Include="sdk\Mapping.h" />
-    <ClInclude Include="sdk\Mem.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mappings.txt" />

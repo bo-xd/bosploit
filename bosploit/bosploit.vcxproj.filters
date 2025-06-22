@@ -66,6 +66,9 @@
     <ClCompile Include="Mappings\Mapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utils\LoaderDetection\LoaderDetection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="net\Minecraft.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mappings\Vanilla\Vanilla1215.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\LoaderDetection\LoaderDetection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

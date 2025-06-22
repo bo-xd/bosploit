@@ -13,7 +13,6 @@ EntityPlayerSP::EntityPlayerSP() {
     methodY = Mapping::GetMethod("EntityPlayerSP", "y");
     methodZ = Mapping::GetMethod("EntityPlayerSP", "z");
 
-    // Debug: Check if methods were found
     if (!methodSetSprinting) std::cerr << "[!] Failed to find setSprint method" << std::endl;
     if (!methodIsSprinting) std::cerr << "[!] Failed to find isSprinting method" << std::endl;
     if (!methodIsCrouching) std::cerr << "[!] Failed to find isCrouching method" << std::endl;

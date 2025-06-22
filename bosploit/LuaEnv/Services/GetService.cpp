@@ -7,15 +7,10 @@
 // utils
 #include "../../net/Minecraft.h"
 #include "../../src/Java.h"
+#include "../../ClassLoader/ClassLoader.h"
 
 int lua_GetService(lua_State* L) {
     const char* serviceName = luaL_checkstring(L, 2);
-
-    JNIEnv* env = javaVmManager->GetJNIEnv();
-    if (!env) {
-        lua_pushnil(L);
-        return 1;
-    }
 
     if (strcmp(serviceName, "Players") == 0) {
         Minecraft mc;
@@ -25,7 +20,7 @@ int lua_GetService(lua_State* L) {
             return 1;
         }
 
-        jobject globalPlayer = env->NewGlobalRef(player);
+        jobject globalPlayer = g_classLoader->env->NewGlobalRef(player);
 
         lua_newtable(L);
 
@@ -39,7 +34,6 @@ int lua_GetService(lua_State* L) {
 
         lua_newtable(L);
 
-        // Character table
         lua_pushlightuserdata(L, globalPlayer);
         lua_setfield(L, -2, "__userdata");
 
@@ -56,7 +50,7 @@ int lua_GetService(lua_State* L) {
         lua_setfield(L, -2, "getY");
         lua_pushcfunction(L, lua_getX);
         lua_setfield(L, -2, "getX");
-        lua_pushcfunction(L, lua_getX);
+        lua_pushcfunction(L, lua_getZ);
         lua_setfield(L, -2, "getZ");
 
         lua_setfield(L, -2, "Character");

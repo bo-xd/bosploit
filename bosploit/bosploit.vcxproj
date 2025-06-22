@@ -36,6 +36,7 @@
     <ClCompile Include="src\Java.cpp" />
     <ClCompile Include="src\Java.h" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="utils\LoaderDetection\LoaderDetection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassLoader\ClassLoader.h" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Mappings\Vanilla\Vanilla1215.h" />
     <ClInclude Include="net\Minecraft.h" />
     <ClInclude Include="net\minecraft\Players\EntityPlayer.h" />
+    <ClInclude Include="utils\LoaderDetection\LoaderDetection.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mappings.txt" />

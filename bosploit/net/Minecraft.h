@@ -13,6 +13,7 @@ public:
     void sendChat(const std::string& message);
 
 private:
+    bool isValid = false;
     jclass minecraftClass = nullptr;
 
     jmethodID getMinecraftMethod = nullptr;

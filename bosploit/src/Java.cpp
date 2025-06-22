@@ -3,21 +3,42 @@
 std::unique_ptr<JavaVmManager> javaVmManager = std::make_unique<JavaVmManager>();
 
 bool JavaVmManager::Init() {
-    jsize vmCount;
-    if (JNI_GetCreatedJavaVMs(&jvm, 1, &vmCount) != JNI_OK || vmCount == 0) {
-        std::cerr << "[-] JNI_GetCreatedJavaVMs failed or no JVMs found\n";
+    std::lock_guard<std::mutex> guard(lock);
+
+    if (initialized) return true;
+
+    jsize vmCount = 0;
+    if (JNI_GetCreatedJavaVMs(&jvm, 1, &vmCount) != JNI_OK || vmCount == 0 || !jvm) {
+        std::cerr << "[-] JNI_GetCreatedJavaVMs failed or returned no VMs\n";
         return false;
     }
 
-    jint result = jvm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6);
+    JNIEnv* env = nullptr;
+    if (!AttachIfNeeded(&env)) {
+        return false;
+    }
+
+    if (jvm->GetEnv(reinterpret_cast<void**>(&jvmti), JVMTI_VERSION_1_2) != JNI_OK || !jvmti) {
+        std::cerr << "[-] Failed to get JVMTI environment\n";
+        return false;
+    }
+
+    initialized = true;
+    return true;
+}
+
+bool JavaVmManager::AttachIfNeeded(JNIEnv** outEnv) {
+    if (!jvm || !outEnv) return false;
+
+    jint result = jvm->GetEnv(reinterpret_cast<void**>(outEnv), JNI_VERSION_1_6);
     if (result == JNI_EDETACHED) {
-        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(&env), nullptr) != JNI_OK) {
-            std::cerr << "[-] Failed to attach current thread to JVM\n";
+        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(outEnv), nullptr) != JNI_OK) {
+            std::cerr << "[-] AttachCurrentThread failed\n";
             return false;
         }
     }
     else if (result != JNI_OK) {
-        std::cerr << "[-] Failed to get JNI env with error code: " << result << "\n";
+        std::cerr << "[-] GetEnv failed with code: " << result << "\n";
         return false;
     }
 
@@ -25,33 +46,18 @@ bool JavaVmManager::Init() {
 }
 
 JNIEnv* JavaVmManager::GetJNIEnv() {
-    JNIEnv* currentEnv = nullptr;
-    jint ret = jvm->GetEnv(reinterpret_cast<void**>(&currentEnv), JNI_VERSION_1_6);
-    if (ret == JNI_EDETACHED) {
-        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(&currentEnv), nullptr) != JNI_OK) {
-            std::cerr << "[-] Failed to attach current thread to JVM\n";
-            return nullptr;
-        }
-    }
-    else if (ret != JNI_OK) {
-        std::cerr << "[-] GetEnv failed with code " << ret << std::endl;
+    JNIEnv* env = nullptr;
+    if (!AttachIfNeeded(&env)) {
+        std::cerr << "[-] GetJNIEnv: Failed to attach or get environment\n";
         return nullptr;
     }
-    return currentEnv;
+    return env;
 }
 
 jvmtiEnv* JavaVmManager::GetjvmtiEnv() {
-    jvmtiEnv* currentEnv = nullptr;
-    jint ret = jvm->GetEnv(reinterpret_cast<void**>(&currentEnv), JNI_VERSION_1_6);
-    if (ret == JNI_EDETACHED) {
-        if (jvm->AttachCurrentThread(reinterpret_cast<void**>(&currentEnv), nullptr) != JNI_OK) {
-            std::cerr << "[-] Failed to attach current thread to JVM (jvmti)\n";
-            return nullptr;
-        }
-    }
-    else if (ret != JNI_OK) {
-        std::cerr << "[-] GetEnv for JVMTI failed with code " << ret << std::endl;
-        return nullptr;
-    }
-    return currentEnv;
+    return jvmti;
+}
+
+JavaVM* JavaVmManager::GetJavaVM() {
+    return jvm;
 }

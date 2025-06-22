@@ -1,53 +1,34 @@
 #include <Windows.h>
 #include <iostream>
+#include <memory>
 
 #include "java.h"
 #include "lua.hpp"
-
 #include "../LuaEnv/Init.h"
-
 #include "../ClassLoader/ClassLoader.h"
 #include "../Mappings/Mapping.h"
-
 #include "../Mappings/Fabric/Fabric1215.h"
 #include "../Mappings/Vanilla/Vanilla1215.h"
+#include "../net/Minecraft.h"
 
-#include "../net/minecraft/Players/EntityPlayerSP.h"
+static FILE* consoleOut = nullptr;
+static std::unique_ptr<Mapping> g_mapping;
 
-FILE* file{ nullptr };
-std::unique_ptr<ClassLoader> g_classLoader;
-std::unique_ptr<Mapping> g_mapping;
-
-void MainThread(HMODULE module) {
+void InitializeConsole() {
     AllocConsole();
-    freopen_s(&file, "CONOUT$", "w", stdout);
-    freopen_s(&file, "CONOUT$", "w", stderr);
-    std::cout << "[*] Bosploit Injected" << std::endl;
-    g_classLoader = std::make_unique<ClassLoader>();
+    freopen_s(&consoleOut, "CONOUT$", "w", stdout);
+    freopen_s(&consoleOut, "CONOUT$", "w", stderr);
+    std::cout << "[*] Bosploit Injected\n";
+}
 
-    if (!g_classLoader->Initialize()) {
-        std::cerr << "[!] Failed to initialize ClassLoader" << std::endl;
-        FreeLibraryAndExitThread(module, 0);
-        return;
-    }
-    
-    std::cout << "[*] JVM, JNI, and JVMTI environments acquired!" << std::endl;
-    g_classLoader->GetLoadedClasses();
-    std::cout << "[*] Loaded classes cached" << std::endl;
-
-    g_mapping = std::make_unique<Mapping>();
-
-    Vanilla1215Mappings::setup();
-
-    g_mapping->Initialize(g_classLoader->env, g_classLoader.get());
-
+void ExecuteLuaScript() {
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     registerLuaEnv(L);
 
-    if (luaL_dofile(L, "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua") != LUA_OK) {
-        const char* err = lua_tostring(L, -1);
-        std::cerr << "Lua error: " << err << std::endl;
+    const char* scriptPath = "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua";
+    if (luaL_dofile(L, scriptPath) != LUA_OK) {
+        std::cerr << "Lua error: " << lua_tostring(L, -1) << "\n";
         lua_pop(L, 1);
     }
 
@@ -56,21 +37,44 @@ void MainThread(HMODULE module) {
     }
 
     lua_close(L);
+}
+
+void MainThread(HMODULE hModule) {
+    InitializeConsole();
+
+    g_classLoader = std::make_unique<ClassLoader>();
+    if (!g_classLoader->Initialize()) {
+        std::cerr << "[!] Failed to initialize ClassLoader\n";
+        FreeLibraryAndExitThread(hModule, 0);
+        return;
+    }
+
+    std::cout << "[*] JVM, JNI, and JVMTI environments acquired!\n";
+    g_classLoader->GetLoadedClasses();
+    std::cout << "[*] Loaded classes cached\n";
+
+    g_mapping = std::make_unique<Mapping>();
+    Vanilla1215Mappings::setup();
+    g_mapping->Initialize(g_classLoader->env, g_classLoader.get());
+
+    ExecuteLuaScript();
 
     std::cout << "[*] Uninjecting\n";
     FreeConsole();
-    FreeLibraryAndExitThread(module, 0);
+    FreeLibraryAndExitThread(hModule, 0);
 }
 
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
+    switch (reason) {
+    case DLL_PROCESS_ATTACH:
+        DisableThreadLibraryCalls(hModule);
+        CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)MainThread, hModule, 0, nullptr);
+        break;
 
-BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved) {
-    if (reason == DLL_PROCESS_ATTACH) {
-        DisableThreadLibraryCalls(module);
-        CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)MainThread, module, 0, nullptr);
-    }
-    else if (reason == DLL_PROCESS_DETACH) {
+    case DLL_PROCESS_DETACH:
         g_mapping.reset();
         g_classLoader.reset();
+        break;
     }
     return TRUE;
 }

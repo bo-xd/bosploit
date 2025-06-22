@@ -1,21 +1,25 @@
 ﻿#pragma once
+
 #include <jni.h>
 #include <jvmti.h>
-#include <unordered_map>
 #include <iostream>
 #include <memory>
-#include <string>
+#include <mutex>
 
 class JavaVmManager {
 public:
     bool Init();
     JNIEnv* GetJNIEnv();
     jvmtiEnv* GetjvmtiEnv();
+    JavaVM* GetJavaVM();
+
 private:
-    JNIEnv* env{ nullptr };
-    jvmtiEnv* jvmti{ nullptr };
-    JavaVM* jvm{ nullptr };
-    std::unordered_map<std::string, jclass> classes;
+    JavaVM* jvm = nullptr;
+    jvmtiEnv* jvmti = nullptr;
+    std::mutex lock;
+    bool initialized = false;
+
+    bool AttachIfNeeded(JNIEnv** outEnv);
 
     friend class JavaInitializer;
 };

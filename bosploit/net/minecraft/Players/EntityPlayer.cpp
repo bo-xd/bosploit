@@ -2,8 +2,6 @@
 #include "../../Minecraft.h"
 #include "../../../Mappings/Mapping.h"
 
-#include "../../../src/Java.h"
-
 #include <iostream>
 
 EntityPlayer::EntityPlayer() {

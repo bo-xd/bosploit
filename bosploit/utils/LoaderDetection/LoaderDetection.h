@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../../ClassLoader/ClassLoader.h"
+#include "../ClassLoader/ClassLoader.h"
 
 enum class ModLoader {
     VANILLA,

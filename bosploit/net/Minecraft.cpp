@@ -1,6 +1,5 @@
 #include "Minecraft.h"
 #include "../Mappings/Mapping.h"
-#include "../src/Java.h"
 
 Minecraft::Minecraft() {
     getMinecraftMethod = Mapping::GetMethod("Minecraft", "getMinecraft");

@@ -2,10 +2,9 @@
 #include <iostream>
 #include <memory>
 
-#include "java.h"
 #include "lua.hpp"
 #include "../LuaEnv/Init.h"
-#include "../ClassLoader/ClassLoader.h"
+#include "../utils/ClassLoader/ClassLoader.h"
 #include "../Mappings/Mapping.h"
 #include "../Mappings/Fabric/Fabric1215.h"
 #include "../Mappings/Vanilla/Vanilla1215.h"
@@ -94,7 +93,7 @@ void MainThread(HMODULE hModule) {
     modloader();
 
     g_mapping = std::make_unique<Mapping>();
-    Fabric1215Mappings::setup();
+    Vanilla1215Mappings::setup();
     g_mapping->Initialize(g_classLoader->env, g_classLoader.get());
 
     ExecuteLuaScript();

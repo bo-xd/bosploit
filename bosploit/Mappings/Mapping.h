@@ -3,7 +3,7 @@
 #undef RegisterClass
 #endif
 #include "jni.h"
-#include "../ClassLoader/ClassLoader.h"
+#include "../utils/ClassLoader/ClassLoader.h"
 #include <unordered_map>
 #include <string>
 

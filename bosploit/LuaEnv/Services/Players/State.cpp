@@ -1,7 +1,6 @@
 #include "Players.h"
 #include "../../../net/minecraft/Players/EntityPlayerSP.h"
 #include "../../../Mappings/Mapping.h"
-#include "../../../src/Java.h"
 #include <iostream>
 
 static EntityPlayerSP* g_playerWrapper = nullptr;

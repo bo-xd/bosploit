@@ -2,7 +2,7 @@
 #undef RegisterClass
 #endif
 #include "Mapping.h"
-#include "../ClassLoader/ClassLoader.h"
+#include "../utils/ClassLoader/ClassLoader.h"
 #include <iostream>
 
 JNIEnv* Mapping::env = nullptr;

@@ -13,7 +13,7 @@ struct Fabric1215Mappings {
         Mapping::RegisterMethod("EntityPlayerSP", "z", "method_23321", "()D", false);
 
         Mapping::RegisterClass("EntityPlayer", "net.minecraft.class_1297");
-        Mapping::RegisterMethod("EntityPlayer", "drop", "method_7290", "(Z)Z", false);
+        Mapping::RegisterMethod("EntityPlayerSP", "drop", "method_7290", "(Z)Z", false);
 
         Mapping::RegisterClass("Minecraft", "net.minecraft.class_310");
         Mapping::RegisterMethod("Minecraft", "getMinecraft", "method_1551", "()Lnet/minecraft/class_310;", true);

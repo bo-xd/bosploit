@@ -6,8 +6,7 @@
 
 // utils
 #include "../../net/Minecraft.h"
-#include "../../src/Java.h"
-#include "../../ClassLoader/ClassLoader.h"
+#include "../../utils/ClassLoader/ClassLoader.h"
 
 int lua_GetService(lua_State* L) {
     const char* serviceName = luaL_checkstring(L, 2);

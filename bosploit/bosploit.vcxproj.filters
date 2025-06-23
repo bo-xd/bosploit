@@ -18,12 +18,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Java.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Java.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="net\Minecraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,7 +54,7 @@
     <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ClassLoader\ClassLoader.cpp">
+    <ClCompile Include="utils\ClassLoader\ClassLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Mappings\Mapping.cpp">
@@ -92,7 +86,7 @@
     <ClInclude Include="net\minecraft\Players\EntityPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClassLoader\ClassLoader.h">
+    <ClInclude Include="utils\ClassLoader\ClassLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mappings\Mapping.h">

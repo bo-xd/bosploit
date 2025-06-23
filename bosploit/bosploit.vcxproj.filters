@@ -27,31 +27,10 @@
     <ClCompile Include="src\LuaEnv\Services\GetService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\LuaEnv\Services\Players\Players.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\LuaEnv\Services\Chat\ChatService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\LuaEnv\Services\PacketService\PacketService.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LuaEnv\Services\Players\Actions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LuaEnv\Services\Players\Position.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\LuaEnv\Services\Players\State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\net\minecraft\Players\EntityPlayerSP.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\net\minecraft\Players\EntityPlayerSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\net\minecraft\Players\EntityPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\ClassLoader\ClassLoader.cpp">
@@ -61,6 +40,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\LoaderDetection\LoaderDetection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\minecraft\Players\Players.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\minecraft\Players\LocalPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaEnv\Services\Players\LLocalPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,16 +62,10 @@
     <ClInclude Include="src\LuaEnv\Services\GetService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\LuaEnv\Services\Players\Players.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\LuaEnv\Services\Chat\ChatService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\LuaEnv\Services\PacketService\PacketService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\net\minecraft\Players\EntityPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\ClassLoader\ClassLoader.h">
@@ -99,6 +81,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\LoaderDetection\LoaderDetection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net\minecraft\Players\LocalPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\net\minecraft\Players\Players.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaEnv\Services\Players\LLocalPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

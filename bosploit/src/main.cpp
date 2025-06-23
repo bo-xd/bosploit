@@ -3,14 +3,14 @@
 #include <memory>
 
 #include "lua.hpp"
-#include "../LuaEnv/Init.h"
-#include "../utils/ClassLoader/ClassLoader.h"
-#include "../Mappings/Mapping.h"
-#include "../Mappings/Fabric/Fabric1215.h"
-#include "../Mappings/Vanilla/Vanilla1215.h"
-#include "../net/Minecraft.h"
+#include "LuaEnv/Init.h"
+#include "utils/ClassLoader/ClassLoader.h"
+#include "Mappings/Mapping.h"
+#include "Mappings/Fabric/Fabric1215.h"
+#include "Mappings/Vanilla/Vanilla1215.h"
+#include "net/Minecraft.h"
 
-#include "../utils/LoaderDetection/LoaderDetection.h"
+#include "utils/LoaderDetection/LoaderDetection.h"
 
 static FILE* consoleOut = nullptr;
 static std::unique_ptr<Mapping> g_mapping;

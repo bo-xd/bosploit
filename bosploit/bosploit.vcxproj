@@ -19,36 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="utils\ClassLoader\ClassLoader.cpp" />
-    <ClCompile Include="LuaEnv\Init.cpp" />
-    <ClCompile Include="LuaEnv\Services\Chat\ChatService.cpp" />
-    <ClCompile Include="LuaEnv\Services\GetService.cpp" />
-    <ClCompile Include="LuaEnv\Services\PacketService\PacketService.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\Actions.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\Players.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\Position.cpp" />
-    <ClCompile Include="LuaEnv\Services\Players\State.cpp" />
-    <ClCompile Include="Mappings\Mapping.cpp" />
-    <ClCompile Include="net\minecraft\Players\EntityPlayer.cpp" />
-    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.cpp" />
-    <ClCompile Include="net\minecraft\Players\EntityPlayerSP.h" />
-    <ClCompile Include="net\Minecraft.cpp" />
+    <ClCompile Include="src\utils\ClassLoader\ClassLoader.cpp" />
+    <ClCompile Include="src\LuaEnv\Init.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\Chat\ChatService.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\GetService.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\PacketService\PacketService.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\Players\Actions.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\Players\Players.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\Players\Position.cpp" />
+    <ClCompile Include="src\LuaEnv\Services\Players\State.cpp" />
+    <ClCompile Include="src\Mappings\Mapping.cpp" />
+    <ClCompile Include="src\net\minecraft\Players\EntityPlayer.cpp" />
+    <ClCompile Include="src\net\minecraft\Players\EntityPlayerSP.cpp" />
+    <ClCompile Include="src\net\minecraft\Players\EntityPlayerSP.h" />
+    <ClCompile Include="src\net\Minecraft.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="utils\LoaderDetection\LoaderDetection.cpp" />
+    <ClCompile Include="src\utils\LoaderDetection\LoaderDetection.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils\ClassLoader\ClassLoader.h" />
-    <ClInclude Include="LuaEnv\init.h" />
-    <ClInclude Include="LuaEnv\Services\Chat\ChatService.h" />
-    <ClInclude Include="LuaEnv\Services\GetService.h" />
-    <ClInclude Include="LuaEnv\Services\PacketService\PacketService.h" />
-    <ClInclude Include="LuaEnv\Services\Players\Players.h" />
-    <ClInclude Include="Mappings\Fabric\Fabric1215.h" />
-    <ClInclude Include="Mappings\Mapping.h" />
-    <ClInclude Include="Mappings\Vanilla\Vanilla1215.h" />
-    <ClInclude Include="net\Minecraft.h" />
-    <ClInclude Include="net\minecraft\Players\EntityPlayer.h" />
-    <ClInclude Include="utils\LoaderDetection\LoaderDetection.h" />
+    <ClInclude Include="src\utils\ClassLoader\ClassLoader.h" />
+    <ClInclude Include="src\LuaEnv\init.h" />
+    <ClInclude Include="src\LuaEnv\Services\Chat\ChatService.h" />
+    <ClInclude Include="src\LuaEnv\Services\GetService.h" />
+    <ClInclude Include="src\LuaEnv\Services\PacketService\PacketService.h" />
+    <ClInclude Include="src\LuaEnv\Services\Players\Players.h" />
+    <ClInclude Include="src\Mappings\Fabric\Fabric1215.h" />
+    <ClInclude Include="src\Mappings\Mapping.h" />
+    <ClInclude Include="src\Mappings\Vanilla\Vanilla1215.h" />
+    <ClInclude Include="src\net\Minecraft.h" />
+    <ClInclude Include="src\net\minecraft\Players\EntityPlayer.h" />
+    <ClInclude Include="src\utils\LoaderDetection\LoaderDetection.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mappings.txt" />

@@ -1,5 +1,5 @@
 #include "Players.h"
-#include "../../net/Minecraft.h"
+#include "../../../net/Minecraft.h"
 
 int lua_getPlayer(lua_State* L) {
     Minecraft mc;

@@ -44,3 +44,39 @@ bool LoaderDetection::HasClass(ClassLoader* classLoader, const std::string& clas
     std::cout << "[DEBUG] Class found: " << className << std::endl;
     return true;
 }
+
+void LoaderDetection::Results(ClassLoader* classLoader) {
+    if (!classLoader) {
+        std::cerr << "[!] ClassLoader not initialized, cannot detect mod loader.\n";
+        return;
+    }
+
+    std::cout << "\n[*] Detecting mod loader..." << std::endl;
+    ModLoader modLoader = LoaderDetection::DetectModLoader(classLoader);
+
+    std::cout << "\n=== MOD LOADER DETECTION RESULT ===" << std::endl;
+    std::cout << "Mod Loader: ";
+
+    switch (modLoader) {
+    case ModLoader::VANILLA:
+        std::cout << "Vanilla";
+        break;
+    case ModLoader::FABRIC:
+        std::cout << "Fabric";
+        break;
+    case ModLoader::FORGE:
+        std::cout << "Forge";
+        break;
+    case ModLoader::QUILT:
+        std::cout << "Quilt";
+        break;
+    case ModLoader::NEOFORGE:
+        std::cout << "NeoForge";
+        break;
+    default:
+        std::cout << "Unknown";
+        break;
+    }
+
+    std::cout << std::endl << "==================================\n" << std::endl;
+}

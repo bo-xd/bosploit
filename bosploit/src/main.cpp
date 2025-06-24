@@ -2,54 +2,19 @@
 #include <iostream>
 #include <memory>
 
-#include "lua.hpp"
-#include "LuaEnv/Init.h"
-#include "utils/ClassLoader/ClassLoader.h"
-#include "Mappings/Mapping.h"
-#include "Mappings/Fabric/Fabric1215.h"
-#include "Mappings/Vanilla/Vanilla1215.h"
-#include "net/Minecraft.h"
-
 #include "utils/LoaderDetection/LoaderDetection.h"
+#include "utils/ClassLoader/ClassLoader.h"
+#include "Mappings/Vanilla/Vanilla1215.h"
+#include "Mappings/Fabric/Fabric1215.h"
+#include "Mappings/Mapping.h"
+#include "net/Minecraft.h"
+#include "LuaEnv/Init.h"
+#include "lua.hpp"
+
+#include "net/minecraft/Players/LocalPlayer.h"
 
 static FILE* consoleOut = nullptr;
 static std::unique_ptr<Mapping> g_mapping;
-
-void modloader() {
-    if (!g_classLoader) {
-        std::cerr << "[!] ClassLoader not initialized, cannot detect mod loader.\n";
-        return;
-    }
-
-    std::cout << "\n[*] Detecting mod loader..." << std::endl;
-    ModLoader modLoader = LoaderDetection::DetectModLoader(g_classLoader.get());
-
-    std::cout << "\n=== MOD LOADER DETECTION RESULT ===" << std::endl;
-    std::cout << "Mod Loader: ";
-
-    switch (modLoader) {
-    case ModLoader::VANILLA:
-        std::cout << "Vanilla";
-        break;
-    case ModLoader::FABRIC:
-        std::cout << "Fabric";
-        break;
-    case ModLoader::FORGE:
-        std::cout << "Forge";
-        break;
-    case ModLoader::QUILT:
-        std::cout << "Quilt";
-        break;
-    case ModLoader::NEOFORGE:
-        std::cout << "NeoForge";
-        break;
-    default:
-        std::cout << "Unknown";
-        break;
-    }
-
-    std::cout << std::endl << "==================================\n" << std::endl;
-}
 
 void InitializeConsole() {
     AllocConsole();
@@ -90,11 +55,14 @@ void MainThread(HMODULE hModule) {
     g_classLoader->GetLoadedClasses();
     std::cout << "[*] Loaded classes cached\n";
 
-    modloader();
+    LoaderDetection::Results(g_classLoader.get());
 
     g_mapping = std::make_unique<Mapping>();
     Vanilla1215Mappings::setup();
     g_mapping->Initialize(g_classLoader->env, g_classLoader.get());
+
+    LocalPlayer lplr;
+    lplr.swing();
 
     ExecuteLuaScript();
 

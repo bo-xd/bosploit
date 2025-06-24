@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="src\LuaEnv\Services\Players\LLocalPlayer.cpp" />
     <ClCompile Include="src\net\minecraft\Players\LocalPlayer.cpp" />
-    <ClCompile Include="src\net\minecraft\Players\Players.cpp" />
     <ClCompile Include="src\utils\ClassLoader\ClassLoader.cpp" />
     <ClCompile Include="src\LuaEnv\Init.cpp" />
     <ClCompile Include="src\LuaEnv\Services\Chat\ChatService.cpp" />
@@ -34,8 +33,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LuaEnv\Services\Players\LLocalPlayer.h" />
+    <ClInclude Include="src\Mappings\Vanilla\Vanilla1215.h" />
     <ClInclude Include="src\net\minecraft\Players\LocalPlayer.h" />
-    <ClInclude Include="src\net\minecraft\Players\Players.h" />
     <ClInclude Include="src\utils\ClassLoader\ClassLoader.h" />
     <ClInclude Include="src\LuaEnv\init.h" />
     <ClInclude Include="src\LuaEnv\Services\Chat\ChatService.h" />
@@ -43,7 +42,6 @@
     <ClInclude Include="src\LuaEnv\Services\PacketService\PacketService.h" />
     <ClInclude Include="src\Mappings\Fabric\Fabric1215.h" />
     <ClInclude Include="src\Mappings\Mapping.h" />
-    <ClInclude Include="src\Mappings\Vanilla\Vanilla1215.h" />
     <ClInclude Include="src\net\Minecraft.h" />
     <ClInclude Include="src\utils\LoaderDetection\LoaderDetection.h" />
   </ItemGroup>

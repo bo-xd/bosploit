@@ -14,7 +14,7 @@ enum class ModLoader {
 class LoaderDetection {
 public:
     static ModLoader DetectModLoader(ClassLoader* classLoader);
-
+    static void Results(ClassLoader* classLoader);
 private:
     static bool HasClass(ClassLoader* classLoader, const std::string& className);
 };

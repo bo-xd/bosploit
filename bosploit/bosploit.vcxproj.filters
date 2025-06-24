@@ -42,9 +42,6 @@
     <ClCompile Include="src\utils\LoaderDetection\LoaderDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\net\minecraft\Players\Players.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\net\minecraft\Players\LocalPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -77,19 +74,16 @@
     <ClInclude Include="src\Mappings\Fabric\Fabric1215.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mappings\Vanilla\Vanilla1215.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utils\LoaderDetection\LoaderDetection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\net\minecraft\Players\LocalPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\net\minecraft\Players\Players.h">
+    <ClInclude Include="src\LuaEnv\Services\Players\LLocalPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\LuaEnv\Services\Players\LLocalPlayer.h">
+    <ClInclude Include="src\Mappings\Vanilla\Vanilla1215.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

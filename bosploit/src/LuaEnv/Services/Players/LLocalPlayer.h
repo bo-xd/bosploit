@@ -13,5 +13,4 @@ namespace LuaBindings::LocalPlayer {
     int lua_getX(lua_State* L);
     int lua_getY(lua_State* L);
     int lua_getZ(lua_State* L);
-
 }

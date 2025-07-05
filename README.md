@@ -3,8 +3,6 @@
 **Roblox-style executor for Minecraft**  
 got kinda bored so just released it open source
 
-[https://bosploit.xyz/](https://bosploit.xyz/)
-
 ---
 
 ## how to build

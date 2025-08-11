@@ -28,7 +28,7 @@ void ExecuteLuaScript() {
     luaL_openlibs(L);
     registerLuaEnv(L);
 
-    const char* scriptPath = "C:/Users/bovan/OneDrive/Bureaublad/minecraft.lua";
+    const char* scriptPath = "UR PATH TO THE LUA FILE";
     if (luaL_dofile(L, scriptPath) != LUA_OK) {
         std::cerr << "Lua error: " << lua_tostring(L, -1) << "\n";
         lua_pop(L, 1);
